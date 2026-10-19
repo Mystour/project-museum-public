@@ -1,0 +1,25 @@
+flowchart TB
+    U[用户] --> FE[emergence-fe\nNext.js / React]
+    FE -->|/api/v1| API[emergence-backend API\nGo / Gin]
+
+    API --> PG[(PostgreSQL\n用户/知识库/文档/状态)]
+    API --> M[(MinIO\n原始文档)]
+    API --> PW[Go Parse Worker]
+
+    PW --> PC[pkg/parser兼容客户端]
+    PC -->|当前优先| W[mytao-emer API\nP012解析切片引擎]
+    PC -.->|旧接口fallback| LEG[emergence-parse-server]
+    W --> PC
+    PC --> S[(文档切片)]
+
+    S --> PI[PageIndex树]
+    S --> IW[Go Index Worker]
+    IW --> EMB[Embedding服务]
+    IW --> ES[(Elasticsearch)]
+
+    FE --> SEARCH[搜索/问答API]
+    SEARCH --> ES
+    SEARCH --> PI
+    SEARCH --> RR[Reranker]
+    SEARCH --> QA[LLM问答 + 会话记忆]
+    QA --> FE

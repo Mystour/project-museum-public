@@ -1,0 +1,11 @@
+flowchart TB
+    U[用户请求] --> UIA[UserInfoAgentV2]
+    UIA --> D[Decision System]
+    D --> S[Scheduler]
+    S --> T[本地/远程工具]
+    T --> MCP[MCP集成]
+    D --> R[RAG与Skill检索]
+    D --> M[Memory Service]
+    M --> DB[(长期记忆)]
+    R --> D
+    MCP --> D

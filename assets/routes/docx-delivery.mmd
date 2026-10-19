@@ -1,0 +1,17 @@
+flowchart TD
+    A["输入 DOCX"] --> B["MinerU 3.4.4 Office"]
+    A --> C["直接读取 OOXML"]
+    B --> D["Markdown、表格、图片、公式"]
+    B --> E["middle.json / content_list_v2.json"]
+    C --> F["段落、Run、样式、目录、编号、粗体、上下文"]
+    D --> G["标题候选与正文位置对齐"]
+    F --> G
+    G --> H["阶段1：判断 heading / table_caption / non_title"]
+    H --> I["冻结标题集合"]
+    I --> J["阶段2：全文一次性 level-only 定级"]
+    J --> K["确定性修复：同级编号、无跳级、嵌套文档、附录"]
+    K --> L["单调一对一合并回 MinerU Markdown"]
+    L --> M["标题、表格、图片、公式和映射审计"]
+    M --> N{"quality_audit passed?"}
+    N -- "是" --> O["正式 Markdown"]
+    N -- "否" --> P["停止交付并人工复核"]

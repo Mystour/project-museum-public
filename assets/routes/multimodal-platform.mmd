@@ -1,0 +1,32 @@
+flowchart TB
+    U["用户或上游业务"] --> OSS["对象存储：原始文件"]
+    U --> APP["llm-application<br/>知识库业务编排"]
+    OSS --> APP
+
+    APP -->|"普通文本解析/切片"| DOC["doc-expert<br/>FastAPI"]
+    DOC -->|"Basic"| SDK["parsing-sdk<br/>本地 Loader 与 Splitter"]
+    DOC -->|"Prime"| PRIME["远程深度解析服务"]
+    SDK --> DOC
+    PRIME --> DOC
+    DOC --> APP
+
+    APP --> EMB["文本 Embedding 服务"]
+    EMB --> APP
+    APP --> PG["PostgreSQL / pgvector<br/>文本切片与向量"]
+    APP --> ES["Elasticsearch<br/>关键词与业务索引"]
+
+    APP -->|"多模态上传"| ZRAG["zrag<br/>多模态编排"]
+    ZRAG --> MQ["RocketMQ"]
+    MQ --> MM["mm-rag-core<br/>文件预处理"]
+    MM --> OSS
+    MM --> ZRAG
+    ZRAG --> VL["qwen3-vl-embedding"]
+    VL --> ZRAG
+    ZRAG --> VDB["腾讯云 VectorDB"]
+
+    U -->|"查询"| APP
+    APP --> PG
+    APP --> ES
+    APP -->|"多模态查询"| ZRAG
+    ZRAG --> VDB
+    ZRAG --> RR["qwen3-vl-rerank"]

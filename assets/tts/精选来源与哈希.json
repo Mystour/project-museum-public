@@ -1,0 +1,38 @@
+[
+  {
+    "file": "tts-control-token-issue.png",
+    "sha256": "2A972D562A3267BA3AD5C534996DCC6EEF5FE64158536122E3344876BA066421",
+    "dimensions": [
+      486,
+      439
+    ],
+    "source": "ang-laptop:D:/1/学校事务/校内竞赛/大学生职业规划大赛/市赛参赛材料/陈子昂职业生涯发展展示校赛决赛PPT.pptx",
+    "slide": 14,
+    "member": "ppt/media/image42.png",
+    "selection": "同内容校赛版本比市赛版本保留更高清像素，画面完整，未修图"
+  },
+  {
+    "file": "tts-topic-interruption.png",
+    "sha256": "15231C7CA2548D49056B39DAF65940FE409F4F8E5D1BD3EBAEC8D3F1D8FFC116",
+    "dimensions": [
+      568,
+      574
+    ],
+    "source": "ang-laptop:D:/1/学校事务/校内竞赛/大学生职业规划大赛/市赛参赛材料/陈子昂职业生涯发展展示校赛决赛PPT.pptx",
+    "slide": 14,
+    "member": "ppt/media/image43.png",
+    "selection": "同内容校赛版本比市赛版本保留更高清像素，画面完整，未修图"
+  },
+  {
+    "file": "tts-app-paper-retrieval.png",
+    "sha256": "28673A5B572536731EE5A2CA5C8DCFC16056F07B5DFD1B8CDB49F41640225EA9",
+    "dimensions": [
+      828,
+      1792
+    ],
+    "source": "ang-laptop:D:/1/学校事务/校内竞赛/大学生职业规划大赛/市赛参赛材料/陈子昂职业生涯发展展示校赛决赛PPT.pptx",
+    "slide": 15,
+    "member": "ppt/media/image44.png",
+    "selection": "同内容校赛版本比市赛版本保留更高清像素，画面完整，未修图"
+  }
+]
